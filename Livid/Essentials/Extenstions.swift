@@ -335,3 +335,25 @@ extension UIStackView {
         }
     }
 }
+
+extension UserDefaults {
+    static let group = UserDefaults(suiteName: "group.com.Livid")!
+    
+    static func save(country: String, newCases: String) {
+        group.setValue(country, forKey: CKey.country)
+        group.setValue(newCases, forKey: CKey.newCases)
+        
+    }
+    
+    static func getDataForWidget() -> (String, String) {
+        var data: (String, String) = ("N/A", "+0")
+        
+        guard let country  = group.object(forKey: CKey.country) as? String else { return data }
+        guard let newCases = group.object(forKey: CKey.newCases) as? String else { return data}
+        
+        data.0 = country
+        data.1 = newCases
+        
+        return data
+    }
+}

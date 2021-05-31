@@ -25,7 +25,7 @@ struct DataMiner {
         
         let request = NSMutableURLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
         
-        request.httpMethod = "GET"
+        request.httpMethod          = "GET"
         request.allHTTPHeaderFields = headers
         
         let session = URLSession.shared

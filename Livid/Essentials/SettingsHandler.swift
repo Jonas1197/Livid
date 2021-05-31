@@ -32,16 +32,16 @@ struct SettingsHandler {
     
     static func saveCountryToGroup(with country: String) {
         var dic = [String : String]()
-        if let userDefaults = UserDefaults(suiteName: AppEssentials.groupWidgetPath) {
-            
-            dic[CKey.country] = country
-            
-            let resultDic = try? NSKeyedArchiver.archivedData(withRootObject: dic, requiringSecureCoding: false)
+        
+        guard let userDefaults = UserDefaults(suiteName: AppEssentials.groupWidgetPath) else { return }
+        
+        dic[CKey.country] = country
+        
+        do {
+            let resultDic = try NSKeyedArchiver.archivedData(withRootObject: dic, requiringSecureCoding: false)
             userDefaults.set(resultDic, forKey: CKey.passedData)
-
-            
-        } else {
-            print(" !! Could not pass data to widgit !! ")
+        } catch {
+            print(error.localizedDescription)
         }
     }
     

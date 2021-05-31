@@ -63,7 +63,6 @@ class SettingsViewController: UIViewController, Storyboarded {
         countriesPickerView.dataSource = self
         showPicker(forUITextField: countryTextField, withPickerView: countriesPickerView)
         SettingsHandler.configureForceDarkThemeSwitch(for: darkThemeEnabledSwitch)
-        reloadWidget(with: GlobalDataMiner.retrievePreviouslySelectedCountry())
     }
     
     

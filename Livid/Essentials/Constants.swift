@@ -14,8 +14,8 @@ struct Font {
 }
 
 struct AppEssentials {
-    static let groupWidgetPath = "group.com.lividData"
-    static let emptyCountry    = ""
+    static let groupWidgetPath = "group.com.Livid"
+    static let emptyCountry    = "N/A"
 }
 
 struct AlertConstants {

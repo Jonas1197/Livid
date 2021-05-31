@@ -126,7 +126,6 @@ class OverviewViewController: UIViewController, Storyboarded {
         countriesPickerView.dataSource = self
         WidgetCenter.shared.reloadAllTimelines()
         showPicker(forUITextField: countryNameTextField, withPickerView: countriesPickerView)
-        retrieveAndSearch(for: GlobalDataMiner.retrievePreviouslySelectedCountry())
     }
     
     fileprivate func retrieveAndSearch(for value: String) {
@@ -247,7 +246,15 @@ class OverviewViewController: UIViewController, Storyboarded {
         guard let country = countryNameTextField.text else { return }
         OverviewHandler.retrieveData(forCountry: country) { [unowned self] (data) in
             self.setVisualData(fromDict: data)
+            let country  = data[CKey.country] as? String ?? "N/A"
+            let newCases = data[CKey.newCases] as? String ?? "+0"
+            UserDefaults.save(country: country, newCases: newCases)
+            WidgetCenter.shared.reloadAllTimelines()
         }
+    }
+    
+    private func saveForWidget(country: String, newCases: String) {
+        
     }
     
     fileprivate func setVisualData(fromDict dict: [String : Any]) {
