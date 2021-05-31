@@ -9,6 +9,11 @@ import Foundation
 
 struct WidgetDataMiner {
     
+    static let headers = [
+        "x-rapidapi-key": "3839ec942bmshff4ff9d235413e1p18454ajsnb3ac3a11b431",
+        "x-rapidapi-host": "covid-193.p.rapidapi.com"
+    ]
+    
     static func findData(forCountry country: String, _ complition: @escaping ([String : Any]) -> Void) {
         
         getData(forCountry: country) { (data) in
@@ -49,16 +54,13 @@ struct WidgetDataMiner {
     }
     
     fileprivate static func getData(forCountry country: String, _ complition: @escaping ([String : Any]) -> Void) {
-        let headers = [
-            "x-rapidapi-key": "3839ec942bmshff4ff9d235413e1p18454ajsnb3ac3a11b431",
-            "x-rapidapi-host": "covid-193.p.rapidapi.com"
-        ]
-        
         let nscountry = country.trimmingCharacters(in: .whitespaces)
+        
         let request = NSMutableURLRequest(url: NSURL(string: "https://covid-193.p.rapidapi.com/statistics?country=\(nscountry)")! as URL,
                                           cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 10.0)
         request.httpMethod = "GET"
+        
         request.allHTTPHeaderFields = headers
         
         let session = URLSession.shared
@@ -89,5 +91,4 @@ struct WidgetDataMiner {
         }
         return nil
     }
-    
 }
