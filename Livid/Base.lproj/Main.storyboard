@@ -94,10 +94,10 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D0c-AB-Oma">
-                                <rect key="frame" x="127" y="827" width="160" height="35"/>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D0c-AB-Oma">
+                                <rect key="frame" x="127" y="821" width="160" height="41"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="CCz-Xx-jed"/>
+                                    <constraint firstAttribute="height" constant="41" id="CCz-Xx-jed"/>
                                     <constraint firstAttribute="width" constant="160" id="ORE-ri-Zs4"/>
                                 </constraints>
                                 <state key="normal" title="About LiveCovid" image="AboutButton">
@@ -243,7 +243,7 @@
                                     <action selector="darkThemeEnabled:" destination="qi5-ce-LK3" eventType="valueChanged" id="Uqv-TA-g54"/>
                                 </connections>
                             </switch>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9u3-ra-FdX">
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9u3-ra-FdX">
                                 <rect key="frame" x="66" y="575.5" width="282.5" height="51.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make a donation" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgY-fA-ult">
@@ -260,7 +260,7 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mns-v6-o6h">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mns-v6-o6h">
                                 <rect key="frame" x="137" y="657" width="140" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="6h3-FF-fAf"/>
@@ -403,8 +403,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AboutButton" width="365" height="93"/>
-        <image name="AboutButtonSelected" width="365" height="93"/>
+        <image name="AboutButton" width="547.5" height="139"/>
+        <image name="AboutButtonSelected" width="547.5" height="139"/>
         <image name="DonateButton" width="365" height="93"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">

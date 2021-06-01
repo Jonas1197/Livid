@@ -79,12 +79,12 @@ class DataBubble: UIView {
         ])
     }
     
-    fileprivate func setUp() {
+    private func setUp() {
         translatesAutoresizingMaskIntoConstraints = false
         configureVisualElements()
     }
     
-    fileprivate func configureVisualElements() {
+    private func configureVisualElements() {
         backgroundColor = .clear
         backgroundView.fix(in: self, toBottomWithHeight: 45)
         valueLabel.fix(in: backgroundView, withPadding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))

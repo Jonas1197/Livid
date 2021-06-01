@@ -33,10 +33,11 @@ class SettingsViewController: UIViewController, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
-        SKPaymentQueue.default().add(self)
+        //SKPaymentQueue.default().add(self)
     }
     
     @IBAction func widgitEnabled(_ sender: UISwitch) {
+        // if app was purchased then dispaly information else dont.
     }
     
     @IBAction func donatePressed(_ sender: UIButton) {
@@ -56,18 +57,19 @@ class SettingsViewController: UIViewController, Storyboarded {
         SettingsHandler.handleDarkThemeSwitch(for: sender)
     }
     
-    fileprivate func setUp() {
+    private func setUp() {
         navigationController?.navigationBar.isHidden = true
         view.backgroundColor = .secondarySystemBackground
         countriesPickerView.delegate   = self
         countriesPickerView.dataSource = self
+        countryTextField.text = UserDefaults.getDataForWidget().0
         showPicker(forUITextField: countryTextField, withPickerView: countriesPickerView)
         SettingsHandler.configureForceDarkThemeSwitch(for: darkThemeEnabledSwitch)
     }
     
     
     
-    fileprivate func showPicker(forUITextField textField: UITextField, withPickerView pickerView: UIPickerView) {
+    private func showPicker(forUITextField textField: UITextField, withPickerView pickerView: UIPickerView) {
         pickerView.tag = textField.tag
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
@@ -114,10 +116,19 @@ extension SettingsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         reloadWidget(with: countries[row])
     }
     
-    func reloadWidget(with country: String) {
+    private func reloadWidget(with country: String) {
         if country != AppEssentials.emptyCountry {
             countryTextField.text = country
-            SettingsHandler.saveCountryToGroup(with: country)
+            findData(for: country)
+        }
+    }
+    
+    private func findData(for country: String) {
+        OverviewHandler.retrieveData(forCountry: country) { (data) in
+            let country  = data[CKey.country] as? String ?? "N/A"
+            let newCases = data[CKey.newCases] as? String ?? "+0"
+            
+            UserDefaults.save(country: country, newCases: newCases)
             WidgetCenter.shared.reloadAllTimelines()
         }
     }

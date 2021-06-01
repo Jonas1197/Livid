@@ -53,7 +53,7 @@ struct WidgetDataMiner {
         }
     }
     
-    fileprivate static func getData(forCountry country: String, _ complition: @escaping ([String : Any]) -> Void) {
+    private static func getData(forCountry country: String, _ complition: @escaping ([String : Any]) -> Void) {
         let nscountry = country.trimmingCharacters(in: .whitespaces)
         
         let request = NSMutableURLRequest(url: NSURL(string: "https://covid-193.p.rapidapi.com/statistics?country=\(nscountry)")! as URL,
@@ -80,7 +80,7 @@ struct WidgetDataMiner {
         dataTask.resume()
     }
     
-    fileprivate static func convertStringToDictionary(text: String) -> [String:AnyObject]? {
+    private static func convertStringToDictionary(text: String) -> [String:AnyObject]? {
         if let data = text.data(using: .utf8) {
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:AnyObject]

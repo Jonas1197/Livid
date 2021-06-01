@@ -337,12 +337,20 @@ extension UIStackView {
 }
 
 extension UserDefaults {
-    static let group = UserDefaults(suiteName: "group.com.Livid")!
+    static let group = UserDefaults(suiteName: AppEssentials.groupWidgetPath)!
     
     static func save(country: String, newCases: String) {
         group.setValue(country, forKey: CKey.country)
         group.setValue(newCases, forKey: CKey.newCases)
-        
+    }
+    
+    static func save(country: String) {
+        group.setValue(country, forKey: CKey.countryInOverview)
+    }
+    
+    static func getCountryForOverview() -> String? {
+        guard let country = group.object(forKey: CKey.countryInOverview) as? String else { return nil }
+        return country
     }
     
     static func getDataForWidget() -> (String, String) {

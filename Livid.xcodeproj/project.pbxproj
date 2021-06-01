@@ -36,8 +36,7 @@
 		755BAFC8264FDA5400364B9A /* LividWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 755BAFC3264FDA5200364B9A /* LividWidget.intentdefinition */; };
 		755BAFCC264FDA5400364B9A /* LividWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 755BAFBA264FDA5200364B9A /* LividWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		755BAFD1264FEA6200364B9A /* WidgetDataMiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755BAFD0264FEA6200364B9A /* WidgetDataMiner.swift */; };
-		755BAFD3264FEAF200364B9A /* GlobalDataMiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755BAFD2264FEAF200364B9A /* GlobalDataMiner.swift */; };
-		755BAFD5264FEB4B00364B9A /* GlobalDataMiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755BAFD2264FEAF200364B9A /* GlobalDataMiner.swift */; };
+		756546322666A05100553D97 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 756546312666A05100553D97 /* StoreKit.framework */; };
 		75FC871A264FEC700044B7EA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755BAF9C264FD41700364B9A /* Constants.swift */; };
 		75FC871B264FEC730044B7EA /* Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755BAF9E264FD42500364B9A /* Extenstions.swift */; };
 		75FC871C264FEC760044B7EA /* DataMiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755BAF9A264FD40700364B9A /* DataMiner.swift */; };
@@ -118,7 +117,9 @@
 		755BAFC4264FDA5400364B9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		755BAFC6264FDA5400364B9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		755BAFD0264FEA6200364B9A /* WidgetDataMiner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDataMiner.swift; sourceTree = "<group>"; };
-		755BAFD2264FEAF200364B9A /* GlobalDataMiner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalDataMiner.swift; sourceTree = "<group>"; };
+		7565462F266696E800553D97 /* Livid.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Livid.entitlements; sourceTree = "<group>"; };
+		7565463026669DDC00553D97 /* LividWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LividWidgetExtension.entitlements; sourceTree = "<group>"; };
+		756546312666A05100553D97 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				756546322666A05100553D97 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +160,7 @@
 		755BAF55264FD39900364B9A = {
 			isa = PBXGroup;
 			children = (
+				7565463026669DDC00553D97 /* LividWidgetExtension.entitlements */,
 				755BAF60264FD39900364B9A /* Livid */,
 				755BAF77264FD39B00364B9A /* LividTests */,
 				755BAF82264FD39B00364B9A /* LividUITests */,
@@ -181,6 +184,7 @@
 		755BAF60264FD39900364B9A /* Livid */ = {
 			isa = PBXGroup;
 			children = (
+				7565462F266696E800553D97 /* Livid.entitlements */,
 				755BAFB1264FD55800364B9A /* Fonts */,
 				755BAFA2264FD48800364B9A /* VC */,
 				755BAF99264FD3FC00364B9A /* Essentials */,
@@ -234,7 +238,6 @@
 		755BAF99264FD3FC00364B9A /* Essentials */ = {
 			isa = PBXGroup;
 			children = (
-				755BAFD2264FEAF200364B9A /* GlobalDataMiner.swift */,
 				755BAF9A264FD40700364B9A /* DataMiner.swift */,
 				755BAF9C264FD41700364B9A /* Constants.swift */,
 				755BAF9E264FD42500364B9A /* Extenstions.swift */,
@@ -267,6 +270,7 @@
 		755BAFBB264FDA5200364B9A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				756546312666A05100553D97 /* StoreKit.framework */,
 				755BAFBC264FDA5200364B9A /* WidgetKit.framework */,
 				755BAFBE264FDA5200364B9A /* SwiftUI.framework */,
 			);
@@ -458,7 +462,6 @@
 				755BAF64264FD39900364B9A /* SceneDelegate.swift in Sources */,
 				755BAFC8264FDA5400364B9A /* LividWidget.intentdefinition in Sources */,
 				755BAFD1264FEA6200364B9A /* WidgetDataMiner.swift in Sources */,
-				755BAFD3264FEAF200364B9A /* GlobalDataMiner.swift in Sources */,
 				755BAFB0264FD54400364B9A /* SettingsHandler.swift in Sources */,
 				755BAFA4264FD49C00364B9A /* OverviewViewController.swift in Sources */,
 				755BAF9F264FD42500364B9A /* Extenstions.swift in Sources */,
@@ -488,7 +491,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				755BAFD5264FEB4B00364B9A /* GlobalDataMiner.swift in Sources */,
 				75FC871B264FEC730044B7EA /* Extenstions.swift in Sources */,
 				755BAFC2264FDA5200364B9A /* LividWidget.swift in Sources */,
 				755BAFC7264FDA5400364B9A /* LividWidget.intentdefinition in Sources */,
@@ -660,7 +662,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Livid/Livid.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.1;
 				DEVELOPMENT_TEAM = 678L74QEPX;
 				INFOPLIST_FILE = Livid/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -668,7 +672,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jonas.dev.Livid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -682,7 +686,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Livid/Livid.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.1;
 				DEVELOPMENT_TEAM = 678L74QEPX;
 				INFOPLIST_FILE = Livid/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -690,7 +696,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jonas.dev.Livid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -787,7 +793,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = LividWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.1;
 				DEVELOPMENT_TEAM = 678L74QEPX;
 				INFOPLIST_FILE = LividWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -799,7 +807,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -808,7 +816,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = LividWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.1;
 				DEVELOPMENT_TEAM = 678L74QEPX;
 				INFOPLIST_FILE = LividWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -820,7 +830,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -50,6 +50,7 @@ struct SimpleEntry: TimelineEntry {
 struct LividWidgetEntryView : View {
     var entry: Provider.Entry
     var body: some View {
+        
         let data = UserDefaults.getDataForWidget()
         
         ZStack {

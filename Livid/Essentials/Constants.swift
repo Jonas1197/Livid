@@ -55,6 +55,7 @@ struct CKey {
     static let recoveredCases = "recoveredCase"
     static let criticalCases  = "criticalCases"
     static let activeCases    = "activeCases"
+    static let countryInOverview = "countryIOV"
      
     static let passedData     = "passedData"
      

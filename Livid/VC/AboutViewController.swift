@@ -13,7 +13,7 @@ class AboutViewController: UIViewController, Storyboarded {
     
     @IBOutlet weak var aboutTitleLabel: UILabel!
     
-    fileprivate var pinkViewOne: UIView {
+    private var pinkViewOne: UIView {
         let view = UIView()
         view.backgroundColor = .systemPink
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -25,13 +25,13 @@ class AboutViewController: UIViewController, Storyboarded {
         setUp()
     }
     
-    fileprivate func setUp() {
+    private func setUp() {
         navigationController?.navigationBar.isHidden = true
         view.backgroundColor = .secondarySystemBackground
         configureColorBand()
     }
     
-    fileprivate func configureColorBand() {
+    private func configureColorBand() {
         pinkViewOne.fix(in: view, belowView: aboutTitleLabel, andHeight: 14)
         view.sendSubviewToBack(pinkViewOne)
     }

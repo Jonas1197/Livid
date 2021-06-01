@@ -97,7 +97,7 @@ class OverviewViewController: UIViewController, Storyboarded {
     
     @IBOutlet weak var refreshButton: UIButton!
     
-    fileprivate var pinkViewOne: UIView {
+    private var pinkViewOne: UIView {
         let view = UIView()
         view.backgroundColor = .systemPink
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -116,7 +116,7 @@ class OverviewViewController: UIViewController, Storyboarded {
         }
     }
 
-    fileprivate func setUp() {
+    private func setUp() {
         navigationController?.navigationBar.isHidden = true
         view.backgroundColor = .secondarySystemBackground
         configureAppTheme()
@@ -124,17 +124,22 @@ class OverviewViewController: UIViewController, Storyboarded {
         addDataBubbles()
         countriesPickerView.delegate   = self
         countriesPickerView.dataSource = self
-        WidgetCenter.shared.reloadAllTimelines()
+        
+        if let country = UserDefaults.getCountryForOverview() {
+            self.countryNameTextField.text = country
+            findData()
+        }
+        
         showPicker(forUITextField: countryNameTextField, withPickerView: countriesPickerView)
     }
     
-    fileprivate func retrieveAndSearch(for value: String) {
+    private func retrieveAndSearch(for value: String) {
         countryNameTextField.text = value
         animateRefresh()
         
     }
     
-    fileprivate func configureAppTheme() {
+    private func configureAppTheme() {
         let appTheme = UserDefaults.standard.bool(forKey: "appTheme")
         
         if let window = UIApplication.shared.keyWindow {
@@ -145,7 +150,7 @@ class OverviewViewController: UIViewController, Storyboarded {
         
     }
     
-    fileprivate func addDataBubbles() {
+    private func addDataBubbles() {
         hstackOne.addArrangedViews(views: newCasesBubble, populatonBubble)
         view.addSubview(hstackOne)
         NSLayoutConstraint.activate([
@@ -177,12 +182,12 @@ class OverviewViewController: UIViewController, Storyboarded {
         ])
     }
     
-    fileprivate func configureColorBand() {
+    private func configureColorBand() {
         pinkViewOne.fix(in: view, belowView: trackLabel, andHeight: 14)
         view.sendSubviewToBack(pinkViewOne)
     }
     
-    fileprivate func showPicker(forUITextField textField: UITextField, withPickerView pickerView: UIPickerView) {
+    private func showPicker(forUITextField textField: UITextField, withPickerView pickerView: UIPickerView) {
         pickerView.tag = textField.tag
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
@@ -209,7 +214,7 @@ class OverviewViewController: UIViewController, Storyboarded {
         animateRefresh()
     }
     
-    fileprivate func animateRefresh() {
+    private func animateRefresh() {
         UIView.animate(withDuration: 2.0, delay: 0.0, options: [.allowUserInteraction, .curveEaseInOut]) {
             self.newCasesBubble.backgroundView.backgroundColor       = .clear
             self.newCasesBubble.backgroundView.backgroundColor       = .systemPink
@@ -227,7 +232,7 @@ class OverviewViewController: UIViewController, Storyboarded {
             self.totalDeathsBubble.backgroundView.backgroundColor    = .systemPink
             
         } completion: { (didFinish) in
-            if didFinish { self.findData() }
+            //
         }
     }
     
@@ -242,14 +247,10 @@ class OverviewViewController: UIViewController, Storyboarded {
         coordinator?.aboutVC()
     }
     
-    fileprivate func findData() {
+    private func findData() {
         guard let country = countryNameTextField.text else { return }
         OverviewHandler.retrieveData(forCountry: country) { [unowned self] (data) in
             self.setVisualData(fromDict: data)
-            let country  = data[CKey.country] as? String ?? "N/A"
-            let newCases = data[CKey.newCases] as? String ?? "+0"
-            UserDefaults.save(country: country, newCases: newCases)
-            WidgetCenter.shared.reloadAllTimelines()
         }
     }
     
@@ -257,7 +258,7 @@ class OverviewViewController: UIViewController, Storyboarded {
         
     }
     
-    fileprivate func setVisualData(fromDict dict: [String : Any]) {
+    private func setVisualData(fromDict dict: [String : Any]) {
         
         if let population = dict[CKey.population] as? Int64 {
             DispatchQueue.main.async {
@@ -350,8 +351,9 @@ extension OverviewViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        countryNameTextField.text = countries[row]
-        SettingsHandler.saveCountryToGroup(with: countries[row])
+        let country = countries[row]
+        countryNameTextField.text = country
+        UserDefaults.save(country: country)
         findData()
     }
 }

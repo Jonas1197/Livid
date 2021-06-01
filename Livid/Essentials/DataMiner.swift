@@ -77,7 +77,7 @@ struct DataMiner {
         dataTask.resume()
     }
     
-    fileprivate static func convertStringToDictionary(strData: String) -> [String:AnyObject]? {
+    private static func convertStringToDictionary(strData: String) -> [String:AnyObject]? {
         var dict: [String : AnyObject]?
         guard let data = strData.data(using: .utf8) else { return nil}
         

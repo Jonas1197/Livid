@@ -30,12 +30,13 @@ struct SettingsHandler {
         saveUserThemeChoice(with: theme)
     }
     
-    static func saveCountryToGroup(with country: String) {
+    static func saveCountryToGroup(with country: String, and newCases: String) {
         var dic = [String : String]()
         
         guard let userDefaults = UserDefaults(suiteName: AppEssentials.groupWidgetPath) else { return }
         
         dic[CKey.country] = country
+        dic[CKey.newCases] = newCases
         
         do {
             let resultDic = try NSKeyedArchiver.archivedData(withRootObject: dic, requiringSecureCoding: false)
@@ -45,7 +46,7 @@ struct SettingsHandler {
         }
     }
     
-    fileprivate static func animateThemeChange(with theme: UIUserInterfaceStyle) {
+    private static func animateThemeChange(with theme: UIUserInterfaceStyle) {
         if let window = UIApplication.shared.keyWindow {
             UIView.transition (with: window, duration: 0.4, options: .transitionCrossDissolve, animations: {
                 window.overrideUserInterfaceStyle = theme
@@ -54,7 +55,7 @@ struct SettingsHandler {
     }
     
     
-    fileprivate static func saveUserThemeChoice(with theme: UIUserInterfaceStyle) {
+    private static func saveUserThemeChoice(with theme: UIUserInterfaceStyle) {
         // save user's choice
         let userDefault = UserDefaults.standard
         userDefault.setValue(theme == .dark, forKey: "appTheme")
